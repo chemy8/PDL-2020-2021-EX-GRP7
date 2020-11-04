@@ -13,15 +13,17 @@ class Donnee:
             "https://en.wikipedia.org/wiki/Comparison_of_S.M.A.R.T._tools",
             "https://en.wikipedia.org/wiki/Comparison_of_DNS_blacklists",
             "https://en.wikipedia.org/wiki/Comparison_of_dance_pad_video_games"]
+    # Read urls from file
     with open('Urls') as file:
 
         for url in urls:
             # print(url)
             html_content = requests.get(url).text
 
+            # Parse html data
             soup = BeautifulSoup(html_content, "html.parser")
-            print(html_content)
 
+            # verify that page contains tables
             if soup.find("table", {'class': 'wikitable'}) is not None:
 
                 table = soup.find("table", {'class': 'wikitable'})
@@ -49,6 +51,7 @@ class Donnee:
                     df = df.append(pd.Series(values, index=columns), ignore_index=True)
 
                 title = soup.title.text
+                # Generate csv file
                 df.to_csv(r'D:\workspace\PDL-2020-2021-EX-GRP7' + '\\' + title + '.csv', index=False)
             else:
                 print("Aucun tableau present dans la page")
