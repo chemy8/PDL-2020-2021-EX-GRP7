@@ -5,15 +5,9 @@ import pandas as pd
 
 class Donnee:
     # Read urls from file
-    test = [
-        "https://en.wikipedia.org/wiki/Comparison_of_Asian_national_space_programs",
-        "https://en.wikipedia.org/wiki/Comparison_of_MD_and_DO_in_the_United_States",
-        "https://en.wikipedia.org/wiki/Comparison_of_Norwegian_Bokmål_and_Standard_Danish",
-        "https://en.wikipedia.org/wiki/Comparison_of_browser_synchronizers",
-    ]
     with open('../Urls') as file:
         data = file.read().splitlines()
-        for url in test:
+        for url in data:
             html_content = requests.get(url).text.replace('\n', '')
 
             # Parse html data
