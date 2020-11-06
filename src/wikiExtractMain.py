@@ -1,3 +1,4 @@
+from src.Donnee import Donnee
 from src.Url import Url
 
 
@@ -7,3 +8,9 @@ class wikiExtractMain:
     title = "test title !"
     validURL = Url.estTitreValid(title) and Url.estWikiPage(url)
     print(validURL)
+
+    # exemple to extract csv
+    # to test this code you should comment the part of code (Read 300+ urls from file) in class Donnee
+    url = "https://en.wikipedia.org/wiki/Comparison_of_dance_video_games"
+    Donnee.extraire(url)
+
