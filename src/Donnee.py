@@ -5,9 +5,15 @@ import pandas as pd
 
 class Donnee:
     # Read urls from file
+    test = [
+        "https://en.wikipedia.org/wiki/Comparison_of_Asian_national_space_programs",
+        "https://en.wikipedia.org/wiki/Comparison_of_MD_and_DO_in_the_United_States",
+        "https://en.wikipedia.org/wiki/Comparison_of_Norwegian_Bokmål_and_Standard_Danish",
+        "https://en.wikipedia.org/wiki/Comparison_of_browser_synchronizers",
+    ]
     with open('../Urls') as file:
         data = file.read().splitlines()
-        for url in data:
+        for url in test:
             html_content = requests.get(url).text.replace('\n', '')
 
             # Parse html data
@@ -31,14 +37,27 @@ class Donnee:
                     ths = rows[i].find_all("th")
                     data = tds + ths
                     values = [td.text.replace('\n', '') for td in data]
+                    # First case ; Verify that numbers of data(columns by row) and columns (head of table) are the same
+                    # So we can index data by columns
                     if len(data) == len(columns):
                         df = df.append(pd.Series(values, index=columns), ignore_index=True)
-                    else:
+                    # Second case ; Verify that numbers of data(columns by row) < columns (head of table)
+                    # So here to be able to index data by columns we added white spaces to data
+                    elif len(data) < len(columns):
                         for j in range(0, len(data)):
                             length = j + 1
                         for k in range(length + 1, len(columns) + 1):
                             values.append('')
-                    df = df.append(pd.Series(values, index=columns), ignore_index=True)
+                        df = df.append(pd.Series(values, index=columns), ignore_index=True)
+                    # Second case ; Verify that numbers of data(columns by row) > columns (head of table)
+                    # So here to be able to index data by columns we added white spaces to columns
+                    else:
+                        for j in range(0, len(columns)):
+                            length = j + 1
+                        for k in range(length + 1, len(data) + 1):
+                            columns.append('')
+                        df = pd.DataFrame(columns=columns)
+                        df = df.append(pd.Series(values, index=columns), ignore_index=True)
 
                 title = soup.title.text
                 # Generate csv file
