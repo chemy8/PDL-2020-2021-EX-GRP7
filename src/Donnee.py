@@ -4,26 +4,16 @@ import pandas as pd
 
 
 class Donnee:
-    urls = ["https://en.wikipedia.org/wiki/Comparison_of_iSCSI_targets",
-            "https://en.wikipedia.org/wiki/Comparison_between_U.S._states_and_countries_by_GDP_(PPP)",
-            "https://en.wikipedia.org/wiki/Comparison_between_Ido_and_Novial",
-            "https://en.wikipedia.org/wiki/Comparison_of_HTML_parsers",
-            "https://en.wikipedia.org/wiki/Comparison_of_MIDI_standards",
-            "https://en.wikipedia.org/wiki/Comparison_of_Power_Management_Software_Suites",
-            "https://en.wikipedia.org/wiki/Comparison_of_S.M.A.R.T._tools",
-            "https://en.wikipedia.org/wiki/Comparison_of_DNS_blacklists",
-            "https://en.wikipedia.org/wiki/Comparison_of_dance_pad_video_games"]
     # Read urls from file
-    with open('Urls') as file:
-
-        for url in urls:
-            # print(url)
-            html_content = requests.get(url).text
+    with open('../Urls') as file:
+        data = file.read().splitlines()
+        for url in data:
+            html_content = requests.get(url).text.replace('\n', '')
 
             # Parse html data
             soup = BeautifulSoup(html_content, "html.parser")
 
-            # verify that page contains tables
+            # TEST ==>  verify that page contains tables
             if soup.find("table", {'class': 'wikitable'}) is not None:
 
                 table = soup.find("table", {'class': 'wikitable'})
@@ -54,4 +44,5 @@ class Donnee:
                 # Generate csv file
                 df.to_csv(r'D:\workspace\PDL-2020-2021-EX-GRP7' + '\\' + title + '.csv', index=False)
             else:
-                print("Aucun tableau present dans la page")
+                title = soup.title.text
+                print("Aucun tableau present dans la page : ", title)
