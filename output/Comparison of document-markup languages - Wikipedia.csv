@@ -1,0 +1,32 @@
+Language,First public release date,Creator,Editor,Viewer
+2002,Stuart Rackham,Text editor,"Output to XHTML, HTML, DocBook (which can convert to PDF, EPUB, DVI, LaTeX, roff, and PostScript)",AsciiDoc
+2010,Wolfram Research,Wolfram Language & Mathematica,CDF Player; CDF format can also be embedded in web pages viewable with conventional browsers.,Computable Document Format
+2007,,Text editor,"Output to HTML, RTF, LaTeX, others; renderers for MFC, others.",Creole
+2005,"IBM, OASIS",Text/XML editor,"Output to HTML, PDF, CHM, javadoc, others.",Darwin Information Typing Architecture (DITA)
+1992,"The Davenport Group, OASIS",XML editor,"Output to HTML, PDF, CHM, javadoc, others.",DocBook
+1998,Berkeley Project,Text editor,Web browser,Encoded Archival Description (EAD)
+2000 (January 26),W3C,"Text/XML editor, HTML editor",Web browser,Extensible HyperText Markup Language (XHTML)
+1993,Tim Berners-Lee,"Text editor, HTML editor",Web browser,HyperText Markup Language (HTML)
+1996,"Han-Wen Nienhuys, Jan Nieuwenhuizen","Text editor, Scorewriter","Output to DVI, PDF, PostScript, PNG, others.",LilyPond
+1986,Frame Technology acquired by Adobe Systems in 1995,"Text editor, FrameMaker",FrameMaker,Maker Interchange Format (MIF)
+2000,Carl Sassenrath,Text editor,Web browser (XHTML or HTML output),MakeDoc
+2004,John Gruber and Aaron Swartz,"Text editor, E-mail client","Web browser (XHTML or HTML output), preview in gedit-markdown-plugin",Markdown
+2002[1],Dean Allen,Text editor,"Web browser (XHTML or HTML output), reference and tester (uses latest PHP-Textile version 3.5.5)",Textile
+1999 (July),W3C,"Text/XML editor, TeX converter","Web browser, Word processor",Math Markup Language (MathML)
+1999,The MEI Community,XML editor,Verovio,The Music Encoding Initiative (MEI)
+2002,Recordare,Scorewriter,Scorewriter,Music Extensible Markup Language (MusicXML)
+2006,"Ecma International, ISO/IEC",Office suite,Office suite,Office Open XML (OOXML)
+2005,"OASIS, ISO/IEC",Office suite,Office suite,OpenDocument Format (ODF)
+2000,Michael Kohlhase,Text/XML editor[2],"Output to XHTML+MathML, TeX, others.",Open Mathematical Documents (OMDoc)
+2003,Org-mode project,"Emacs, text editor","Emacs. Output to HTML, PDF, DocBook, FreeMind, OpenDocument Format (ODF), others.",Org-mode
+2001[3],David Goodger,Text editor,"Output to HTML, LaTeX, PDF, Unix man pages, ODT, S5 (HTML Slide Shows), XML, others.",reStructuredText
+1987,Microsoft,"Text editor, Word processor",Word processor,Rich Text Format (RTF)
+2004,W3C,Vector graphics editor,"Web browser, etc.",Scalable Vector Graphics (SVG)
+19681971,IBM,Text editor,"GDDM, AFP viewer",ScriptGML
+19781984,Donald KnuthLeslie Lamport,Text editor,DVI or Portable Document Format (PDF) converter,TeXLaTeX
+1986,Richard Stallman,Text editor,"output to DVI, Portable Document Format (PDF), HTML, DocBook, others.",Texinfo
+1998,Joris van der Hoeven,Text/TeXmacs editor,PDF or PostScript files. Converters exist for TeX/LaTeX and XHTML+Mathml,TeXmacs format
+1990,Text Encoding Initiative Consortium,Text/XML editor,"Web Browser (using XHTML), PDF, Word Processor (using ODF) or EPUB",Text Encoding Initiative (TEI)
+1973,Joe Ossanna,Text editor,"groffer, or output to PostScript","troff (typesetter runoff), groff (GNU runoff)"
+1999,WAP Forum,Text/XML editor,Microbrowser,Wireless Markup Language (WML)
+Language,First public release date,Creator,Editor,Viewer

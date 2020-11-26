@@ -1,6 +1,6 @@
 from src.Donnee import Donnee
 from src.Url import Url
-
+from flask import Flask
 
 class wikiExtractMain:
     # exemple for test URL
