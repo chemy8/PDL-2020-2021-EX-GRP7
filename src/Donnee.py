@@ -70,7 +70,7 @@ class Donnee:
 
 
     # Read 300+ urls from file
-    with open('../Urls') as file:
-        data = file.read().splitlines()
-        for url in data:
-            extraire(url)
+    #with open('../Urls') as file:
+        #data = file.read().splitlines()
+        #for url in data:
+            #extraire(url)

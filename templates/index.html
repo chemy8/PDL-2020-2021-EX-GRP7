@@ -17,24 +17,22 @@
 </head>
 <body>
 <h1>Comparator CSVs </h1>
-<form>
+<form action="urlForm" method="post">
     <div class="form-group">
         <label>URL</label>
-        <input type="text" class="form-control" id="url" placeholder="Enter url">
+        <input type="text" class="form-control" id="url" placeholder="Enter url" name="url" value=""
+        >
+<label >Choose an extractor:</label>
+<select id="extractors" name="extractors">
+  <option value="H">HTML/JAVA</option>
+  <option value="W">WIKI/JAVA</option>
+  <option value="PYH">HTML/PY</option>
+
+</select>
     </div>
     <!-- Example single danger button -->
-    <div class="btn-group">
-        <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                aria-expanded="false">
-            Extractors
-        </button>
-        <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">WIKITEXT</a>
-            <a class="dropdown-item" href="#">HTML/JAVA</a>
-            <a class="dropdown-item" href="#">HTML/PY</a>
-        </div>
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+
+    <button type="submit" class="btn btn-primary" name="urlBtn" >Submit</button>
 </form>
 </body>
 </html>
