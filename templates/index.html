@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
             integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
             crossorigin="anonymous"></script>
@@ -13,26 +14,125 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+{% block custom_js %}
+    <script>
+        $(document).ready(function(){
+            $(document).on("dblclick",".editable",function(){
+                var value=$(this).text();
+                var data_type=$(this).data("type");
+                var input_type="text";
+                if(data_type=="created_at")
+                {
+                    input_type="datetime-local";
+                }
+                var input="<input type='"+input_type+"' class='input-data' value='"+value+"' class='form-control'>";
+                $(this).html(input);
+                $(this).removeClass("editable")
+            });
+
+            $(document).on("blur",".input-data",function(){
+                var value=$(this).val();
+                var td=$(this).parent("td");
+                $(this).remove();
+                td.html(value);
+                td.addClass("editable");
+                var type=td.data("type");
+                sendToServer(td.data("id"),value,type);
+            });
+            $(document).on("keypress",".input-data",function(e){
+                var key=e.which;
+                if(key==13){
+                    var value=$(this).val();
+                    var td=$(this).parent("td");
+                    $(this).remove();
+                    td.html(value);
+                    td.addClass("editable");
+                   var type=td.data("type");
+                   sendToServer(td.data("id"),value,type);
+                }
+            });
+
+            function sendToServer(id,value,type){
+                console.log(id);
+                console.log(value);
+                console.log(type);
+                $.ajax({
+                    url:"http://127.0.0.1:8000/savestudent",
+                    type:"POST",
+                    data:{id:id,type:type,value:value},
+                })
+                .done(function(response){
+                    console.log(response);
+                })
+                .fail(function(){
+                   console.log("Error Occured");
+                });
+
+            }
+        });
+    </script>
+{% endblock custom_js %}
     <title>Hello word</title>
 </head>
 <body>
-<h1>Comparator CSVs </h1>
+<h1 style="    margin-left: 40%;
+    color: chocolate;
+    font-weight: 800;">Comparator CSVs </h1>
 <form action="urlForm" method="post">
     <div class="form-group">
-        <label>URL</label>
-        <input type="text" class="form-control" id="url" placeholder="Enter url" name="url" value=""
-        >
-<label >Choose an extractor:</label>
-<select id="extractors" name="extractors">
-  <option value="H">HTML/JAVA</option>
-  <option value="W">WIKI/JAVA</option>
-  <option value="PYH">HTML/PY</option>
+        <label STYLE="      margin: 20px;
 
-</select>
+    FONT-SIZE: large;
+    font-weight: bold;">URL</label>
+        <input style="    width: 80%;
+    margin-left: 20px;" type="text" class="form-control" id="url" placeholder="Enter url" name="url" value=""
+        >
+        <label STYLE="      margin: 20px;
+
+    FONT-SIZE: large;
+    font-weight: bold;">Choose an extractor:</label>
+        <select id="extractors" name="extractors" STYLE="    background-color: #9acd32b5;
+    border-radius: 9px;">
+            <option value="H">HTML/JAVA</option>
+            <option value="W">WIKI/JAVA</option>
+            <option value="PYH">HTML/PY</option>
+
+        </select>
     </div>
     <!-- Example single danger button -->
 
-    <button type="submit" class="btn btn-primary" name="urlBtn" >Submit</button>
+    <button type="submit" class="btn btn-primary" name="urlBtn" style=" float: right;
+    margin-bottom: 20px;
+    margin-top: -55px;">Submit</button>
 </form>
+<form action="validForm" method="post">
+
+<table class="table form-control wikitable table-striped">
+    <tr class="table_head">
+        {% for header in heading %}
+        <th>{{ header }}</th>
+        {% endfor %}
+    </tr>
+    {% for row in data %}
+    <tr class="table_row">
+        {% for cell in row %}
+        <td class="editable" data-id="{{ cell }}" data-type="cell">{{ cell }}</td>
+        {% endfor %}
+    </tr>
+
+    {% endfor %}
+</table>
+
+<button type="submit" class="btn btn-primary" name="validBtn" style=" float: right;
+    margin-bottom: 20px;
+    margin-top: 20px;">Valid</button>
+</form>
+<div style="width: 100%;
+    border: 2px solid #d39e009e; margin-top: 80px;     height: 300px;">
+    <h5 style="    color: #b9970e;
+    font-family: system-ui;
+    font-style: oblique;">Difference between CSVs </h5>
+</div>
 </body>
 </html>
