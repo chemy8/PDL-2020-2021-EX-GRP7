@@ -7,7 +7,6 @@ from src.Url import Url
 class Donnee:
     # Extraire() method to extract and generate csv
     def extraire(url):
-        print('tessssssssssst')
         # TEST === > Verify URL
         if Url.estWikiPage(url) is not None:
             # Get html code
@@ -120,7 +119,7 @@ class Donnee:
                 title = soup.title.text
                 # Generate csv file
                 # You should edit this path with the path of your project ( in your local) to recuperate csv files
-                df.to_csv(r'D:\workspace\PDL-2020-2021-EX-GRP7\output' + '\\' + title + '.csv', index=False)
+                df.to_csv(r'D:\workspace\PDL-2020-2021-EX-GRP7\correctCSV' + '\\' + title + '.csv', index=False)
 
         else:
                 title = soup.title.text
