@@ -16,7 +16,9 @@
  3. Open with the IDE the folder witch contains your project.
  4. You do to install library of python BeautifulSoup with this command in your terminal ‘pip3 install requests beautifulsoup4’.
  5. You do to install library of python BeautifulSoup with this command in your terminal ‘pip3 install requests pandas’.
- 6. You can run `donnees.py you will see csv files in **output** 
+ 6. You can run `donnees.py locate in the folder /src you will see csv files in **output** 
+ 
+
  
  
 
