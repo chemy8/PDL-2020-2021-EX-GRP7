@@ -50,6 +50,32 @@ How to install it ?
 
 You can find more details in [INSTALL.md](https://github.com/chemy8/PDL-2020-2021-EX-GRP7/blob/main/INSTALL.md).
 
+ ## How to run project?
+In this project you have two parts:
+the extractor python , his run is explain in install.md
+and the comparator of extractor 
+ ## Fonctionement and run of comparator_interface.py
+![Project architecture](img/Inkedcomp2_LI.jpg)
+
+-fonctionement of comparator_interface.py
+It is a web interface to compare csv files from 3 extractors (java:html and wikitext and python:html) obtained from URL Wikipedia
+there are 7 parts on this interface:
+1) URL WIKIPEDIA: you have to enter the Url to be extracted
+2) CHOOSING AN EXTRACTOR: you have to choose from a drop-down list one of the 3 extractors you want to use
+3)DATA TABLE:
+in order to make it easier for the user to understand the CSV file is displayed in the form of an editable table.
+4) RECORD CHANGES
+here after modifying your table you can save the changes in the CSV file.
+5) VISUALIZE THE DIFFERENCE
+you will be able to see the major differences between the 3 extractors 
+6)CHOICE OF THE CSV TO BE DISPLAYED IN THE TABLE
+in case you have several tables, the first table is displayed by default and you can choose here the CSV of the table you want to display
+7) SAFE OF GROUND TRUTH
+in this part you can save your modified CSV in the folder correctCSV 
+
+
+-run of comparator_interface.py
+For run this part 
 
 ## Folders' structure
 
@@ -62,19 +88,20 @@ Folders:
 .
   
 
-- the /src folder contains three folders :
+- the /src folder contains four folders :
   1. Donnee.py containing the implementation class of our extractor.
   2. Url containing url for test.
   3. wikiExtractMain is main class.
+  4.Comparator_interface.py the comparator interface
 
 ## Running the tests
 
 
 ## Parsing wikitables
 
-For extracting from both HTML and WIKITEXT, you need to go:
+For extracting from both HTML  you need to go:
 
-On PyCharm : Double click on the green play button on your right.
+On PyCharm : Double click on the green play button on your right for run wikiExtractMain.py .
 
 Put Url you want extract.
 ```
@@ -91,17 +118,6 @@ Put Url you want extract.
 
 * [Pycharm](https://www.jetbrains.com/fr-fr/pycharm/) - The IDE used
 git config --global user.email johndoe@example.com
-## Versioning
-
-- prototype : the latest prototype built to test the concept
-
-- V1 : in this version, last year group putted most HTML tables are parsed successfully. The project's structure is a non-Maven one, we could not run "Maven test". Also, in this version, urls parsing was executed one at a time.
-
-- V2 : This version supports the Maven test command & has a simple UI allowing interaction with the user made by the earlier group.
-
-- master : the lastest, stable version of the project.
-
-- develop : our branch built to test the concept before committing it to master
 
 ## Authors
 
@@ -116,7 +132,7 @@ This module takes place at the University of Rennes 1, ISTIC, in Master 1 (MIAGE
 The objective of PDL is to carry out a software project with open technologies and data. 
 There are many challenges to overcome, requiring skills in project management, modeling, and programming.
 This scenario should make it possible to better understand and apprehend the difficulty of developing software in an extremely concrete context. 
-Software development technics and tools (git, github, Maven, JUnit, etc.) well known to the industry will be used. 
+Software development technics and tools (git, github, etc.) well known to the industry will be used. 
 Technological choices will also have to be made.
 
 ## License
